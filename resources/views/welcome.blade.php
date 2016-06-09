@@ -21,9 +21,10 @@
 					    <label for="email">Email address</label>
 					    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
 					  </fieldset>
+
 					  <fieldset class="form-group">
 					    <label for="phone">Phone Number</label>
-					    <input type="number" class="form-control" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 9);" id="phone" name="phone" placeholder="Phone Number" required>
+					    <input class="form-control" id="phone" name="phone" placeholder="Phone Number" required>
 					  </fieldset>
 				      <div class="button">
 				    	<?php echo Form::submit('Submit'); ?>
@@ -63,4 +64,23 @@
 				return this.optional( element ) || /[a-z]+@[a-z]+\.[a-z]+/.test( value );
 		}
 	</script>  
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+	<script>
+	$( "#infoForm" ).validate({
+	  rules: {
+	    email: {
+	      required: true,
+	      email: true
+	    },
+	    phone: {
+	      required: true,
+	      minlength: 10,
+	      phoneUS: true
+	    }
+	  }
+	});
+	</script>
 @stop
